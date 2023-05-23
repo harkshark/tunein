@@ -1,3 +1,42 @@
+# Lauren Rodriguez for TuneIn
+
+What fun to work on this challenge! Thanks for the opportunity
+and consideration. React Hooks didn't exist when I was an IC
+four years ago and this is the first hands-on opportunity I've
+had to write a custom hook! 
+
+Considerations and iterations
+ - I used Create React App to quickly bootstrap this project. 
+   The file directory could use some clean up and customization
+   for the context of the app.
+ - I decided to fetch all stations regardless of reliability
+   or availability. To improve user experience we'd want to set
+   a threshold/check on stations that we aren't confident will
+   play.
+ - My Filters implementation is rudimentary. A more realistic
+   strategy would be to extract all unique filters from the
+   stations list, identify potential duplicates (like "hits"
+   and "top hits"), and render them as Tags. We'd also do well
+   to specific sort vs. filter and allow both simultaneously.
+ - There's potential for a shared compoent, Station, that both
+   the StationsList and NowPlaying components could use.
+ - There's a missing layer on validating a station's ability
+   to play and if a subscription/credentials are needed (CNN).
+   My experience with rendering media through the HTML audio
+   tag is limited but I'd like to be able to know more about
+   the state of the selected steam.
+ - At what point are we passing props around so much it's
+   had to follow? When should we abstract with React Context
+   or Redux?
+ - What might we do to address accessibility? How well can a
+   screen reader parse this markup? Do stations have transcripts
+   available?
+ - What happens when the list of stations is huge? Pagination
+   and lazy loading for performance would be critical for
+   user experience.
+ - Use the computer for what it does best! Linting and
+   automatic formatting.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
