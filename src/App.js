@@ -19,13 +19,15 @@ function App() {
   }
   
   const clickFilter = filter => {
-    if (filter === 'popular') {
-    		setActiveFilter(filter);
-        setFilteredStations(sortByPopularity(allStations));
-      } else {
-      	setActiveFilter(filter);
-        setFilteredStations(filterStations(allStations, filter));
-      }
+    if (filter === activeFilter) {
+      return;
+    } else if (filter === 'popular') {
+      setActiveFilter(filter);
+      setFilteredStations(sortByPopularity(allStations));
+    } else {
+      setActiveFilter(filter);
+      setFilteredStations(filterStations(allStations, filter));
+    }
   }
   
   // Find and return the station object
