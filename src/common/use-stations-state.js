@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import StationsContext from './StationsContext';
+import { StationsContext } from './StationsContext';
+import { sortByPopularity, filterStations } from './utilities'
 
 const useStationsState = () => {
     const allStations = useContext(StationsContext);
@@ -16,6 +17,7 @@ const useStationsState = () => {
     };
 
     const clickFilter = filter => {
+        console.log('activeFilter = ' + activeFilter); // returns empty string
         if (filter === activeFilter) {
             return;
         } else if (filter === 'popular') {

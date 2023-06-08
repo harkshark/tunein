@@ -1,5 +1,3 @@
 import { createContext } from "react";
 
-const StationsContext = createContext();
-
-export default StationsContext;
+export const StationsContext = createContext(); // Needs default value? []
