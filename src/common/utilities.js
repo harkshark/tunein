@@ -8,7 +8,11 @@ function sortByPopularity (stations) {
   }
 
   function filterStations (stations, filter) {
-    return stations.filter(station => station.tags.includes(filter));
+    if (filter === 'all') {
+      return stations;
+    } else {
+      return stations.filter(station => station.tags.includes(filter));
+    }
   }
 
   export { sortByPopularity, filterStations };
