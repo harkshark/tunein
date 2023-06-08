@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useFetch from './common/use-fetch';
 import { sortByPopularity, filterStations } from './common/utilities';
 import Filters from './components/Filters/Filters';
@@ -11,7 +11,7 @@ const TUNEIN_API = 'https://s3-us-west-1.amazonaws.com/cdn-web.tunein.com/statio
 function App() {
   const { allStations } = useFetch(TUNEIN_API);
   const [filteredStations, setFilteredStations] = useState(null);
-  const [activeFilter, setActiveFilter] = useState('');
+  const [activeFilter, setActiveFilter] = useState('all');
   const [stationNowPlaying, setStationNowPlaying] = useState('');
   
   const clickStation = station => {
@@ -19,14 +19,20 @@ function App() {
   }
   
   const clickFilter = filter => {
-    if (filter === 'popular') {
-    		setActiveFilter(filter);
-        setFilteredStations(sortByPopularity(allStations));
-      } else {
-      	setActiveFilter(filter);
-        setFilteredStations(filterStations(allStations, filter));
-      }
+    if (filter === activeFilter) {
+      setActiveFilter('all');
+    } else {
+      setActiveFilter(filter);
+    }
   }
+
+  useEffect(() => {
+    if (activeFilter === 'popular') {
+      setFilteredStations(sortByPopularity(allStations));
+    } else {
+      setFilteredStations(filterStations(allStations, activeFilter));
+    }
+  }, [activeFilter]); // Should allStations also be a dependency?
   
   // Find and return the station object
   const getStation = (filter) => allStations?.filter(station => station.id === stationNowPlaying);

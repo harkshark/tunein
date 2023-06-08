@@ -1,4 +1,4 @@
-const AVAILABLE_FILTERS = ['popular', 'jazz', 'news'];
+const AVAILABLE_FILTERS = ['all', 'popular', 'jazz', 'news'];
 
 const Filters = ({active, handleClick}) => {
     const filtersList = AVAILABLE_FILTERS.map(filter => {
